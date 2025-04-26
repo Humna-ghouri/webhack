@@ -252,7 +252,9 @@ loanRequestSchema.virtual('loan_emi').get(function() {
     return emi.toFixed(2);
 });
 
-// ✅ Fix OverwriteModelError
-mongoose.models.LoanRequest && delete mongoose.models.LoanRequest;
+// Fix OverwriteModelError
+if (mongoose.models.LoanRequest) {
+    delete mongoose.models.LoanRequest;
+}
 
 export default mongoose.model('LoanRequest', loanRequestSchema);
