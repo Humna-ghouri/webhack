@@ -21,16 +21,36 @@
 // };
 
 // Connection events
-mongoose.connection.on('connected', () => {
-  console.log('Mongoose connected to DB');
-});
+// mongoose.connection.on('connected', () => {
+//   console.log('Mongoose connected to DB');
+// });
 
-mongoose.connection.on('error', (err) => {
-  console.error('Mongoose connection error:', err);
-});
+// mongoose.connection.on('error', (err) => {
+//   console.error('Mongoose connection error:', err);
+// });
 
-mongoose.connection.on('disconnected', () => {
-  console.log('Mongoose disconnected');
-});
+// mongoose.connection.on('disconnected', () => {
+//   console.log('Mongoose disconnected');
+// });
 
-export default connectDB;
+// export default connectDB;
+
+// db/db.js
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
+
+export const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('✅ MongoDB Connected');
+  } catch (error) {
+    console.error('❌ MongoDB Connection Error:', error.message);
+    process.exit(1);
+  }
+};
