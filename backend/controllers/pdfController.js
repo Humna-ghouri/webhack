@@ -71,7 +71,7 @@
 
 // controllers/pdfController.js
 import { generatePDF } from '../utils/pdfGenerator.js';
-import LoanRequest from '../../models/LoanRequest.js';
+import LoanRequest from '../../models/loanRequest.js';
 
 export const generateLoanPDF = async (req, res) => {
   try {

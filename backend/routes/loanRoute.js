@@ -110,7 +110,7 @@
 
 import express from 'express';
 import multer from 'multer';
-import LoanRequest from '../models/LoanRequest.js';
+import LoanRequest from '../models/loanRequest.js';// Ensure this path is correct
 import QRCode from 'qrcode';
 import authMiddleware from '../Middlewares/authMiddleware.js';
 import cloudinaryUpload from '../config/cloudinary.js';
